@@ -1,3 +1,13 @@
-<p>
-  store works!
-</p>
+<div class="navbar navbar-inverse navbar-expand-md bg-success">
+  <a href="/" class="navbar-brand">Sport Store</a>
+</div>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-8 p-a-1 bg-info">{{products.length}} products</div>
+    <div class="col-md-4 p-a-1 bg-muted">{{categories.length}} categories</div>
+  </div>
+  <p *ngFor="let product of products">
+    {{product.name}}
+  </p>
+</div>
+
