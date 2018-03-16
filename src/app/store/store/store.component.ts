@@ -10,22 +10,28 @@ import { StaticDataSource } from '../../model/static.datasource';
 })
 export class StoreComponent implements OnInit {
   id: number;
-  selectedCategory: string;
+  selectedCategory = null;
+  productsPrePage = 4;
+  selectedPage = 1;
 
   constructor(private productRepository: ProductRepository) {}
 
   get products(): Product[] {
-    return this.productRepository.getProducts();
+    const pageIndex = (this.selectedPage - 1) * this.productsPrePage;
+    return this.productRepository.getProducts().slice(pageIndex, pageIndex + this.productsPrePage);
   }
   get categories(): string[] {
     return this.productRepository.getCategories();
   }
   ngOnInit() {}
 
-  changeCategory(category: string) {
+  changeCategory(category?: string) {
     this.selectedCategory = category;
     this.products.forEach(x => {
       x.showed = false;
+      if (!category) {
+        x.showed = true;
+      }
       if (x.category === this.selectedCategory) {
         x.showed = true;
       }
