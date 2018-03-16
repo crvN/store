@@ -9,9 +9,11 @@ import { StaticDataSource } from '../../model/static.datasource';
   styleUrls: ['./store.component.scss']
 })
 export class StoreComponent implements OnInit {
-  // products: Product[] = [];
   id: number;
+  selectedCategory: string;
+
   constructor(private productRepository: ProductRepository) {}
+
   get products(): Product[] {
     return this.productRepository.getProducts();
   }
@@ -19,4 +21,14 @@ export class StoreComponent implements OnInit {
     return this.productRepository.getCategories();
   }
   ngOnInit() {}
+
+  changeCategory(category: string) {
+    this.selectedCategory = category;
+    this.products.forEach(x => {
+      x.showed = false;
+      if (x.category === this.selectedCategory) {
+        x.showed = true;
+      }
+    });
+  }
 }

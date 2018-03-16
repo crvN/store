@@ -3,11 +3,26 @@
 </div>
 <div class="container">
   <div class="row mt-5">
-    <div class="col-md-8 p-a-1 bg-info">{{products.length}} products</div>
-    <div class="col-md-4 p-a-1 bg-muted">{{categories.length}} categories</div>
+    <div class="col-md-8 p-a-1 ">
+      <div *ngFor="let product of products">
+        <ng-container *ngIf="product.showed">
+          <div class="card card-outline-primary">
+            <h4 class="card-header">
+              {{product.name}}
+              <span class="pull-xs-right tag tag-pill tag-primary">
+                {{ product.price | currency:"USD":true:"2.2-2" }}
+              </span>
+            </h4>
+            <div class="card-text p-a-1">{{product.description}}</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-4 p-a-1 bg-muted">
+      <button *ngFor="let cat of categories" class="btn btn-outline-primary
+       btn-block" [class.active]="cat === selectedCategory" (click)="changeCategory(cat)">
+        {{cat}}
+      </button>
+    </div>
   </div>
-  <p *ngFor="let product of products">
-    {{product.name}}
-  </p>
 </div>
-
