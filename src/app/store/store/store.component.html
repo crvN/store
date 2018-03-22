@@ -31,8 +31,8 @@
       <li class="page-item">
         <a class="page-link" href="#" tabindex="-1">Previous</a>
       </li>
-      <li class="page-item" *ngFor="let pages of (products.length / productsPrePage); let i = index;">
-        <a class="page-link" href="#">{{i}}</a>
+      <li class="page-item" *ngFor="let pages of [1,2,3]; let i = index;">
+        <a class="page-link" href="#">{{i+1}}</a>
       </li>
       <!-- <li class="page-item active">
         <a class="page-link" href="#">2
