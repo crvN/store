@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { StoreComponent } from './store/store/store.component';
 import { StoreModule } from './store/store.module';
+import { CounterDirective } from './directives/counter.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, CounterDirective],
   imports: [BrowserModule, StoreModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]

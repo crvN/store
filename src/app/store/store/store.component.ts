@@ -48,6 +48,13 @@ export class StoreComponent implements OnInit {
     this.changePage(1);
   }
 
+  // get pageCount(): number {
+  //   return Math.ceil(
+  //     this.productRepository.getProducts(this.selectedCategory).length /
+  //       this.productsPrePage
+  //   );
+  // }
+
   get PageNumbers(): number[] {
     return Array(
       Math.ceil(
