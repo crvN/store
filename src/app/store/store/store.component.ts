@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductRepository } from '../../model/product.repository';
 import { Product } from '../../model/product.model';
 import { StaticDataSource } from '../../model/static.datasource';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-store',
@@ -14,7 +15,10 @@ export class StoreComponent implements OnInit {
   productsPrePage = 4;
   selectedPage = 1;
 
-  constructor(private productRepository: ProductRepository) {}
+  constructor(
+    private productRepository: ProductRepository,
+    private cart: CartService
+  ) {}
 
   get products(): Product[] {
     const pageIndex = (this.selectedPage - 1) * this.productsPrePage;
@@ -46,6 +50,10 @@ export class StoreComponent implements OnInit {
   changePageSize(amount: number) {
     this.productsPrePage = amount;
     this.changePage(1);
+  }
+
+  addProductToCart(product: Product) {
+    this.cart.addLine(product);
   }
 
   // get pageCount(): number {

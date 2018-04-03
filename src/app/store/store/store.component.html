@@ -1,5 +1,6 @@
 <div class="navbar navbar-inverse navbar-expand-md bg-success">
   <a href="/" class="navbar-brand">Sport Store</a>
+  <app-cart></app-cart>
 </div>
 <section class="market p-b-3">
   <div class="container">
@@ -14,7 +15,12 @@
                   {{ product.price | currency:"USD":true:"2.2-2" }}
                 </span>
               </h4>
-              <div class="card-text p-a-1">{{product.description}}</div>
+              <div class="card-text p-a-1">
+                {{product.description}}
+                <button class="btn btn-success btn-sm pull-xs-right" (click)="addProductToCart(product)">
+                  Add To Cart
+                </button>
+              </div>
             </div>
           </ng-container>
         </div>
