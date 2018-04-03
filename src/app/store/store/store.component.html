@@ -1,50 +1,45 @@
 <div class="navbar navbar-inverse navbar-expand-md bg-success">
   <a href="/" class="navbar-brand">Sport Store</a>
 </div>
-<div class="container">
-  <div class="row mt-5">
-    <div class="col-md-8 p-a-1 ">
-      <div *ngFor="let product of products">
-        <ng-container *ngIf="product.showed">
-          <div class="card card-outline-primary">
-            <h4 class="card-header">
-              {{product.name}}
-              <span class="pull-xs-right tag tag-pill tag-primary">
-                {{ product.price | currency:"USD":true:"2.2-2" }}
-              </span>
-            </h4>
-            <div class="card-text p-a-1">{{product.description}}</div>
-          </div>
-        </ng-container>
+<section class="market p-b-3">
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-8 p-a-1 ">
+        <div *ngFor="let product of products">
+          <ng-container *ngIf="product.showed">
+            <div class="card card-outline-primary">
+              <h4 class="card-header">
+                {{product.name}}
+                <span class="pull-xs-right tag tag-pill tag-primary">
+                  {{ product.price | currency:"USD":true:"2.2-2" }}
+                </span>
+              </h4>
+              <div class="card-text p-a-1">{{product.description}}</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-md-4 p-a-1 bg-muted">
+        <button (click)="changeCategory()" class="btn btn-outline-primary btn-block">All categories</button>
+        <button *ngFor="let cat of categories" class="btn btn-outline-primary
+         btn-block" [class.active]="cat === selectedCategory" (click)="changeCategory(cat)">
+          {{cat}}
+        </button>
       </div>
     </div>
-    <div class="col-md-4 p-a-1 bg-muted">
-      <button (click)="changeCategory()" class="btn btn-outline-primary btn-block">All categories</button>
-      <button *ngFor="let cat of categories" class="btn btn-outline-primary
-       btn-block" [class.active]="cat === selectedCategory" (click)="changeCategory(cat)">
-        {{cat}}
+    <div class="form-inline pull-xs-left m-r-1">
+      <select class="form-control" [value]="productsPrePage" (change)="changePageSize($event.target.value)">
+        <option value="3">3 per Page</option>
+        <option value="4">4 per Page</option>
+        <option value="6">6 per Page</option>
+        <option value="8">8 per Page</option>
+      </select>
+    </div>
+
+    <div class="btn-group pull-xs-right">
+      <button *ngFor="let page of PageNumbers" (click)="changePage(page)" class="btn btn-outline-primary" [class.active]="page == selectedPage">
+        {{page}}
       </button>
     </div>
   </div>
-  <nav aria-label="...">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item" *ngFor="let pages of [1,2,3]; let i = index;">
-        <a class="page-link" href="#">{{i+1}}</a>
-      </li>
-      <!-- <li class="page-item active">
-        <a class="page-link" href="#">2
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#">3</a>
-      </li> -->
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
-</div>
+</section>
