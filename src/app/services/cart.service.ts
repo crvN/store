@@ -4,8 +4,8 @@ import { Product } from '../model/product.model';
 @Injectable()
 export class CartService {
   lines: CartLine[] = [];
-  itemCount: number;
-  cartPrice: number;
+  itemCount = 0;
+  cartPrice = 0;
 
   constructor() {}
 

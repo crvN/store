@@ -3,6 +3,7 @@ import { ProductRepository } from '../../model/product.repository';
 import { Product } from '../../model/product.model';
 import { StaticDataSource } from '../../model/static.datasource';
 import { CartService } from '../../services/cart.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -17,7 +18,8 @@ export class StoreComponent implements OnInit {
 
   constructor(
     private productRepository: ProductRepository,
-    private cart: CartService
+    private cart: CartService,
+    private route: Router
   ) {}
 
   get products(): Product[] {
@@ -54,6 +56,7 @@ export class StoreComponent implements OnInit {
 
   addProductToCart(product: Product) {
     this.cart.addLine(product);
+    this.route.navigateByUrl('/cart');
   }
 
   // get pageCount(): number {
