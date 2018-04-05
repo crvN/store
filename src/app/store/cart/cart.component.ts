@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.cart.itemCount);
+    console.log(this.cart.itemCount);
   }
 
 }
