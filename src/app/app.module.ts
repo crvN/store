@@ -7,11 +7,12 @@ import { StoreComponent } from './store/store/store.component';
 import { StoreModule } from './store/store.module';
 import { CounterDirective } from './directives/counter.directive';
 import { AppRoutingModule } from './app.routing';
+import { StoreFirstGuard } from './guards/store-first.guard';
 
 @NgModule({
   declarations: [AppComponent, CounterDirective],
   imports: [BrowserModule, StoreModule, FormsModule, AppRoutingModule],
-  providers: [],
+  providers: [StoreFirstGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StoreComponent } from './store/store.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { StoreFirstGuard } from '../guards/store-first.guard';
 
 export const routes: Routes = [
   {
@@ -14,19 +15,19 @@ export const routes: Routes = [
   {
     path: 'store',
     component: StoreComponent,
+    canActivate: [StoreFirstGuard]
   },
   {
     path: 'cart',
-    component: CartDetailComponent
+    component: CartDetailComponent,
+    canActivate: [StoreFirstGuard]
   },
   {
     path: 'checkout',
-    component: CheckoutComponent
+    component: CheckoutComponent,
+    canActivate: [StoreFirstGuard]
   },
-  {
-    path: '**',
-    redirectTo: '/store'
-  }
+  { path: '**', redirectTo: '/store' }
 ];
 
 @NgModule({
