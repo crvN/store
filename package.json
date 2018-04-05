@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "json": "json-server data.js -p 3500 -m authMiddleware.js",
-    "deploy": "ng build --prod --base-href https://crvN.github.io/store/ && angular-cli-ghpages --branch gh-pages"
+    "deploy": "ng build --prod --base-href https://crvN.github.io/store/ && ngh"
   },
   "private": true,
   "dependencies": {
