@@ -12,7 +12,9 @@ export class OrderService {
   constructor(
     private cart: CartService,
     private dataSource: StaticDataSource
-  ) {}
+  ) {
+    this.order = new Order();
+  }
 
   clear() {
     this.order.id = null;

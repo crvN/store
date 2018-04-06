@@ -14,9 +14,12 @@ export class CheckoutComponent implements OnInit {
   submitted = false;
   order: Order;
 
-  constructor(private orderService: OrderService, private location: Location) { }
+  constructor(private orderService: OrderService, private location: Location) {
+    this.order = new Order();
+  }
 
   ngOnInit() {
+    this.order.id = Math.ceil(Math.random() * 100);
   }
 
   submitOrder(form: NgForm) {
