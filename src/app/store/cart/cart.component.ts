@@ -7,11 +7,7 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
+  constructor(public cart: CartService) {}
 
-  constructor(public cart: CartService) { }
-
-  ngOnInit() {
-    console.log(this.cart.itemCount);
-  }
-
+  ngOnInit() {}
 }

@@ -7,7 +7,7 @@
     <div class="row mt-5">
       <div class="col-md-8 p-a-1 ">
         <div *ngFor="let product of products">
-          <ng-container *ngIf="product.showed">
+          <!-- <ng-container *ngIf="product.showed"> -->
             <div class="card card-outline-primary">
               <h4 class="card-header">
                 {{product.name}}
@@ -22,7 +22,7 @@
                 </button>
               </div>
             </div>
-          </ng-container>
+          <!-- </ng-container> -->
         </div>
       </div>
       <div class="col-md-4 p-a-1 bg-muted">

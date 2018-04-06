@@ -31,9 +31,12 @@ export class StoreComponent implements OnInit {
   get categories(): string[] {
     return this.productRepository.getCategories();
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.products);
+  }
 
   changeCategory(category?: string) {
+    console.log(this.products);
     this.selectedCategory = category;
     this.products.forEach(x => {
       x.showed = false;
